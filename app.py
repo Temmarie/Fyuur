@@ -57,6 +57,17 @@ class Artist(db.Model):
 
 # TODO Implement Show and Artist models, and complete all model relationships and properties, as a database migration.
 
+class Show(db.Model):
+  __tablename__ = 'Show'
+  id = db.Column(db.Integer, primary_key=True)
+  artist_id = db.Column(db.Integer, ForeignKey("Artist.id"), nullable=False)
+  venue_id = db.Column(db.Integer, ForeignKey("Venue.id"), nullable=False)
+  start_time = db.Column(db.DateTime, default=datetime.datetime.now(), nullable=False)
+
+def __repr__(self):
+        return f"<Show id={self.id} artist_id={self.artist_id} venue_id={self.venue_id} start_time={self.start_time}"
+
+
 #----------------------------------------------------------------------------#
 # Filters.
 #----------------------------------------------------------------------------#
